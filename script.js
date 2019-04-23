@@ -35,7 +35,7 @@ function incrementYear(){
 }
 
 function decrementYear(){
-    year +=1;
+    year -=1;
     calendar(month, year)
 }
 
