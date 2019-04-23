@@ -1,21 +1,35 @@
-(function calendar(){
-    var d = new Date();
-    var monthName = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-    var month = d.getMonth(); //0-11
-    var year = d.getFullYear(); //2019
-    var firstDate = monthName[month] + ' 1 ' + year;
+const monthName = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+const dayName = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+let d = new Date();
+let month = d.getMonth(); //0-11
+let year = d.getFullYear(); //2019
+
+function incrementMonth(){
+    month +=1;
+    calendar(month, year)
+}
+
+function decrementMonth(){
+    month -=1;
+    calendar(month, year)
+}
+
+function calendar(month, year){
+    const firstDate = monthName[month] + ' 1 ' + year;
     //April 1 2019
-    var tmp = new Date(firstDate).toDateString();
+    const tmp = new Date(firstDate).toDateString();
     //Mon Apr 01 2019 ...
-    var firstDay = tmp.substring(0, 3);
+    const firstDay = tmp.substring(0, 3);
     //Mon
-    var dayName = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-    var dayNo = dayName.indexOf(firstDay) //1
-    var days = new Date(year, month+1, 0).getDate() //30
+    const dayNo = dayName.indexOf(firstDay) //1
+    const days = new Date(year, month+1, 0).getDate() //30
 
     document.getElementById("calendar-month-year").innerHTML = monthName[month]+" "+year;
+    document.getElementById("calendar-dates").innerHTML = "";
     document.getElementById("calendar-dates").appendChild(getCalendar(dayNo, days));
-})();
+};
 
 function getCalendar(dayNo, days){
     var table = document.createElement('table');
@@ -67,3 +81,5 @@ function getCalendar(dayNo, days){
     
     return table
 }
+
+calendar(month, year);
