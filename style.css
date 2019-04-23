@@ -15,8 +15,14 @@
     margin-bottom: 10px;
 }
 
+#calendar-header{
+    display: flex;
+    align-items: center;
+}
+
 #calendar-month-year{
     margin: 5px;
+    flex-grow: 1;
 }
 
 #calendar-dates>table>tr>td{
@@ -25,4 +31,12 @@
 
 .pointer{
     cursor: pointer;
+}
+
+.pointer:first-child{
+    margin-right: 10px;
+}
+
+.pointer:last-child{
+    margin-left: 10px;
 }

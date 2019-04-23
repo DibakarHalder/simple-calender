@@ -6,13 +6,36 @@ let d = new Date();
 let month = d.getMonth(); //0-11
 let year = d.getFullYear(); //2019
 
+function setYear(){
+    if(month >= 12){
+        month = 0;
+        year += 1
+    }
+    if(month < 0){
+        month = 11;
+        year -= 1
+    }
+}
+
 function incrementMonth(){
     month +=1;
+    setYear();
     calendar(month, year)
 }
 
 function decrementMonth(){
     month -=1;
+    setYear();
+    calendar(month, year)
+}
+
+function incrementYear(){
+    year +=1;
+    calendar(month, year)
+}
+
+function decrementYear(){
+    year +=1;
     calendar(month, year)
 }
 
